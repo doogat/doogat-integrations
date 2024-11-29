@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "doogat-integrations"
+version = "0.1.0-alpha.1"
+description = ""
+authors = ["Tomáš Bouška <admin@doogat.com>"]
+license = "GNU GPLv3"
+readme = "README.md"
+packages = [
+   { include = "doogat", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+# buvis-pybase = "0.1.4"
+buvis-pybase = {version = "0.1.5a6", source = "test-pypi"}
+# buvis-pybase = {path = "../../buvis/buvis-pybase", develop = true}
+# doogat-core = "0.1.2"
+doogat-core = {version = "0.1.3a28", source = "test-pypi"}
+# doogat-core = {path = "../../doogat/doogat-core", develop = true}
+
+
+[[tool.poetry.source]]
+name = "test-pypi"
+url = "https://test.pypi.org/simple/"
+priority = "explicit"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "3.8.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "8.3.3"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "8.0.2"
+sphinx-rtd-theme = "3.0.0rc1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint]
+extend-select = ["B", "Q", "D"]
+# ignore = ["D100", "D101", "D102","D103", "D107", "D205", "D211", "D213", "D401"]
+ignore = ["D211", "D213"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["D104"]
+"tests/*.py" = ["S101"]
+"**/{tests,docs,tools}/*" = ["D"]
