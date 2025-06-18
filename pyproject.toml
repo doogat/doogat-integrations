@@ -28,7 +28,7 @@ priority = "explicit"
 pre-commit = "4.2.0"
 
 [tool.poetry.group.test.dependencies]
-pytest = "8.4.0"
+pytest = "8.4.1"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "8.2.3"
