@@ -9,6 +9,7 @@ description = ""
 authors = ["Tomáš Bouška <admin@doogat.com>"]
 license = "GNU GPLv3"
 readme = "README.md"
+
 [[tool.poetry.packages]]
 include = "doogat"
 from = "src"
