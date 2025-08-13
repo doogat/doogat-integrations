@@ -27,7 +27,7 @@ extend-select = ["B", "Q", "D"]
 ignore = ["D211", "D213"]
 
 [tool.poetry.dependencies.buvis-pybase]
-version = "0.1.4"
+version = "0.1.5"
 source = "test-pypi"
 
 [tool.poetry.dependencies.doogat-core]
