@@ -22,7 +22,7 @@ jobs:
           python-version: "3.14"
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v4
+        uses: astral-sh/setup-uv@v7
 
       - uses: actions/cache@v4
         name: Cache virtual environment
