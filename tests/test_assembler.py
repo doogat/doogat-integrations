@@ -147,11 +147,10 @@ class TestGetTicketReferences:
         assert "This solves SR SR-100." in result
         assert "Related SR: SR-200." in result
 
-    def test_two_related_tickets_bug(self):
-        # BUG: len==2 branch computes string but never appends to ref_text
+    def test_two_related_tickets(self):
         zettel = _make_zettel(ticket=None, ticket_related="SR-300 SR-200")
         result = _get_ticket_references(zettel)
-        assert result == ""
+        assert "SR-200 and SR-300" in result
 
     def test_multiple_related_tickets(self):
         zettel = _make_zettel(ticket=None, ticket_related="SR-300 SR-100 SR-200")

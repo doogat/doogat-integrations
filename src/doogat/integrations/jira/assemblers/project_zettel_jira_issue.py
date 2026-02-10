@@ -87,7 +87,7 @@ def _get_ticket_references(source):
                 ticket_list_str = (
                     ", ".join(ticket_list[:-1]) + ", and " + ticket_list[-1]
                 )
-                ref_text += f" Related SRs: {ticket_list_str}."
+            ref_text += f" Related SRs: {ticket_list_str}."
         else:
             ref_text += f" Related SR: {source.ticket_related}."
 
