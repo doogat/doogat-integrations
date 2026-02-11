@@ -3,12 +3,13 @@ from typing import Any
 from buvis.pybase.adapters import JiraAdapter as BuvisJiraAdapter
 from buvis.pybase.adapters.jira.domain.jira_issue_dto import JiraIssueDTO
 from doogat.core.domain.entities import ProjectZettel
+
 from doogat.integrations.jira.assemblers.project_zettel_jira_issue import (
     ProjectZettelJiraIssueDTOAssembler,
 )
 
 
-class JiraAdapter(BuvisJiraAdapter):
+class JiraAdapter(BuvisJiraAdapter):  # type: ignore[misc]
     def __init__(self: "JiraAdapter", cfg: Any) -> None:
         self._cfg = cfg
         self._adapter = BuvisJiraAdapter(self._cfg)

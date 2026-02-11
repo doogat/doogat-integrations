@@ -1,31 +1,39 @@
-from doogat.core.domain.entities.project.project import ProjectZettel
+from __future__ import annotations
+
+from typing import Any
+
 from buvis.pybase.adapters.jira.domain.jira_issue_dto import JiraIssueDTO
+from doogat.core.domain.entities.project.project import ProjectZettel
 
 
 class ProjectZettelJiraIssueDTOAssembler:
-    def __init__(self, defaults: dict = None):
+    def __init__(self, defaults: dict[str, Any] | None = None) -> None:
         self.defaults = defaults or {}
 
     def to_dto(self, source: ProjectZettel) -> JiraIssueDTO:
         if not self.defaults.get("project"):
-            raise ValueError("Default project is required")
-        else:
-            project = self.defaults["project"]
+            msg = "Default project is required"
+            raise ValueError(msg)
+
+        project = self.defaults["project"]
 
         if not self.defaults.get("region"):
-            raise ValueError("Default region is required")
-        else:
-            region = self.defaults["region"]
+            msg = "Default region is required"
+            raise ValueError(msg)
+
+        region = self.defaults["region"]
 
         if not self.defaults.get("user"):
-            raise ValueError("Default user is required")
-        else:
-            user = self.defaults["user"]
+            msg = "Default user is required"
+            raise ValueError(msg)
+
+        user = self.defaults["user"]
 
         if not self.defaults.get("team"):
-            raise ValueError("Default team is required")
-        else:
-            team = self.defaults["team"]
+            msg = "Default team is required"
+            raise ValueError(msg)
+
+        team = self.defaults["team"]
 
         if source.deliverable == "enhancement":
             issue_type = self.defaults["enhancements"]["issue_type"]
@@ -40,7 +48,7 @@ class ProjectZettelJiraIssueDTOAssembler:
 
         description = "No description provided"
 
-        for section in source._data.sections:
+        for section in source._data.sections:  # noqa: SLF001
             title, content = section
             if title == "## Description":
                 description = content.strip()
@@ -71,7 +79,7 @@ class ProjectZettelJiraIssueDTOAssembler:
         )
 
 
-def _get_ticket_references(source):
+def _get_ticket_references(source: ProjectZettel) -> str:
     ref_text = ""
 
     if hasattr(source, "ticket") and source.ticket is not None:
@@ -84,9 +92,7 @@ def _get_ticket_references(source):
             if len(ticket_list) == 2:
                 ticket_list_str = " and ".join(ticket_list)
             else:
-                ticket_list_str = (
-                    ", ".join(ticket_list[:-1]) + ", and " + ticket_list[-1]
-                )
+                ticket_list_str = ", ".join(ticket_list[:-1]) + ", and " + ticket_list[-1]
             ref_text += f" Related SRs: {ticket_list_str}."
         else:
             ref_text += f" Related SR: {source.ticket_related}."
