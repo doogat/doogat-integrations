@@ -27,10 +27,6 @@ docs = ["sphinx>=9.1.0,<10", "sphinx-rtd-theme>=3.1.0,<4"]
 default-groups = ["dev", "test"]
 add-bounds = "major"
 
-[tool.uv.sources]
-buvis-pybase = { index = "test-pypi" }
-doogat-core = { index = "test-pypi" }
-
 [[tool.uv.index]]
 name = "test-pypi"
 url = "https://test.pypi.org/simple/"
