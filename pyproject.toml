@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "doogat-integrations"
-version = "0.2.3"
+version = "0.3.0"
 description = "External service integrations for the Doogat zettelkasten system"
 authors = [{ name = "Tomáš Bouška", email = "admin@doogat.com" }]
 license = "GPL-3.0-or-later"
